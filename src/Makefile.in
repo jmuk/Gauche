@@ -205,7 +205,12 @@ libgauche_OBJECTS = \
 	libsys.$(OBJEXT) libvec.$(OBJEXT)
 libgauche_LDFLAGS = $(SONAME_FLAG) @SHLIB_DYLIB_LDFLAGS@
 
-libgc_OBJECTS = `ls -1 $(top_builddir)/gc/*.$(OBJEXT) | grep -v '/cord' | grep -v '/staticrootslib'`
+ifeq ($(SOEXT),)
+libgc_basedir = 
+else
+libgc_basedir = .libs/
+endif
+libgc_OBJECTS = `ls -1 $(top_builddir)/gc/$(libgc_basedir)*.$(OBJEXT) | grep -v '/cord' | grep -v '/staticrootslib'`
 
 HEADERS = gauche.h $(INSTALL_SUBHEADERS) $(PRIVATE_HEADERS)
 
