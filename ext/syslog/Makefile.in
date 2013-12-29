@@ -15,6 +15,7 @@ GENERATED = Makefile
 XCLEANFILES = gauche--syslog.c $(SCMFILES)
 
 all : $(LIBFILES)
+static : $(OBJECTS)
 
 gauche--syslog.$(SOEXT) : $(OBJECTS)
 	$(MODLINK) gauche--syslog.$(SOEXT) $(OBJECTS) $(EXT_LIBGAUCHE) $(LIBS)

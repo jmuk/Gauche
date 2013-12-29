@@ -14,17 +14,17 @@ XCLEANFILES = rfc--md5.c rfc--sha.c *.sci
 
 all : $(LIBFILES)
 
+md5_OBJECTS = rfc--md5.$(OBJEXT) md5c.$(OBJEXT)
+sha_OBJECTS = rfc--sha.$(OBJEXT) sha2.$(OBJEXT)
 OBJECTS = $(md5_OBJECTS) $(sha_OBJECTS)
 
-md5_OBJECTS = rfc--md5.$(OBJEXT) md5c.$(OBJEXT)
+static : $(OBJECTS)
 
 rfc--md5.$(SOEXT) : $(md5_OBJECTS)
 	$(MODLINK) rfc--md5.$(SOEXT) $(md5_OBJECTS) $(EXT_LIBGAUCHE) $(LIBS)
 
 md5.sci rfc--md5.c : md5.scm
 	$(PRECOMP) -e -P -o rfc--md5 $(srcdir)/md5.scm
-
-sha_OBJECTS = rfc--sha.$(OBJEXT) sha2.$(OBJEXT)
 
 $(sha_OBJECTS) : sha2.h
 

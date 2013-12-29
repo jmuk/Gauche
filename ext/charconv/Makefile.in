@@ -23,6 +23,7 @@ OBJECTS = charconv.$(OBJEXT)      \
           guess.$(OBJEXT)
 
 all : $(LIBFILES)
+static : $(OBJECTS)
 
 gauche--charconv.$(SOEXT) : $(OBJECTS)
 	$(MODLINK) gauche--charconv.$(SOEXT) $(OBJECTS) $(EXT_LIBGAUCHE) $(LIBS)

@@ -19,6 +19,7 @@ GENERATED = Makefile
 XCLEANFILES = zliblib.c
 
 all : $(LIBFILES)
+static : $(OBJECTS)
 
 rfc--zlib.$(SOEXT) : $(OBJECTS)
 	$(MODLINK) rfc--zlib.$(SOEXT) $(OBJECTS) $(EXT_LIBGAUCHE) $(LIBS)

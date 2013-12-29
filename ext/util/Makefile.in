@@ -18,6 +18,7 @@ util_queue_OBJECTS = util--queue.$(OBJEXT)
 util_match_OBJECTS = util--match.$(OBJEXT)
 
 all : $(LIBFILES)
+static : $(OBJECTS)
 
 util--match.$(SOEXT) : $(util_match_OBJECTS)
 	$(MODLINK) util--match.$(SOEXT) $(util_match_OBJECTS) $(EXT_LIBGAUCHE) $(LIBS)

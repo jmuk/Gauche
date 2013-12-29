@@ -15,6 +15,7 @@ GENERATED = Makefile
 XCLEANFILES = fcntlib.c
 
 all : $(LIBFILES)
+static : $(OBJECTS)
 
 gauche--fcntl.$(SOEXT) : $(OBJECTS)
 	$(MODLINK) gauche--fcntl.$(SOEXT) $(OBJECTS) $(EXT_LIBGAUCHE) $(LIBS)

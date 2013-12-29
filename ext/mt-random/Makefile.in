@@ -15,6 +15,7 @@ SCMFILES = mt-random.scm
 OBJECTS = mt-random.$(OBJEXT) mt-lib.$(OBJEXT)
 
 all : $(LIBFILES)
+static : $(OBJECTS)
 
 math--mt-random.$(SOEXT) : $(OBJECTS)
 	$(MODLINK) math--mt-random.$(SOEXT) $(OBJECTS) $(EXT_LIBGAUCHE) $(LIBS)

@@ -19,6 +19,7 @@ GENERATED = Makefile
 XCLEANFILES = netlib.c netaux.c
 
 all : $(LIBFILES)
+static : $(OBJECTS)
 
 gauche--net.$(SOEXT) : $(OBJECTS)
 	$(MODLINK) gauche--net.$(SOEXT) $(OBJECTS) $(EXT_LIBGAUCHE) $(LIBS)

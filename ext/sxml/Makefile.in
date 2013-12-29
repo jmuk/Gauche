@@ -26,14 +26,17 @@ LIBFILES = sxml--ssax.$(SOEXT) sxml--sxpath.$(SOEXT) sxml--tools.$(SOEXT) \
 SCMFILES = adaptor.scm ssax.sci sxpath.sci tools.sci \
            tree-trans.scm to-html.scm serializer.sci
 
+ssax_OBJECTS = sxml--ssax.$(OBJEXT)
+sxpath_OBJECTS = sxml--sxpath.$(OBJEXT)
+tools_OBJECTS = sxml--tools.$(OBJEXT)
+serializer_OBJECTS = sxml--serializer.$(OBJEXT)
 OBJECTS = $(ssax_OBJECTS) $(sxpath_OBJECTS) $(tools_OBJECTS) \
           $(serializer_OBJECTS)
 
 all : $(LIBFILES) $(GENERATED_TARGET)
+static : $(OBJECTS)
 
 ### sxml-ssax
-
-ssax_OBJECTS = sxml--ssax.$(OBJEXT)
 
 sxml--ssax.$(SOEXT) : $(ssax_OBJECTS)
 	$(MODLINK) sxml--ssax.$(SOEXT) $(ssax_OBJECTS) $(EXT_LIBGAUCHE) $(LIBS)
@@ -46,8 +49,6 @@ sxml-ssax.scm : sxml-ssax.scm.in src/SSAX.scm
 
 ### sxml-sxpath
 
-sxpath_OBJECTS = sxml--sxpath.$(OBJEXT)
-
 sxml--sxpath.$(SOEXT) : $(sxpath_OBJECTS)
 	$(MODLINK) sxml--sxpath.$(SOEXT) $(sxpath_OBJECTS) $(EXT_LIBGAUCHE) $(LIBS)
 
@@ -59,8 +60,6 @@ sxml-sxpath.scm : sxml-sxpath.scm.in src/sxpath.scm src/sxpathlib.scm src/sxpath
 
 ### sxml-tools
 
-tools_OBJECTS = sxml--tools.$(OBJEXT)
-
 sxml--tools.$(SOEXT) : $(tools_OBJECTS)
 	$(MODLINK) sxml--tools.$(SOEXT) $(tools_OBJECTS) $(EXT_LIBGAUCHE) $(LIBS)
 
@@ -71,8 +70,6 @@ sxml-tools.scm : sxml-tools.scm.in src/sxml-tools.scm
 	$(SCMTRANS) $(srcdir)/sxml-tools.scm.in
 
 ### sxml-serializer
-
-serializer_OBJECTS = sxml--serializer.$(OBJEXT)
 
 sxml--serializer.$(SOEXT) : $(serializer_OBJECTS)
 	$(MODLINK) sxml--serializer.$(SOEXT) $(serializer_OBJECTS) $(EXT_LIBGAUCHE) $(LIBS)

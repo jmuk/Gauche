@@ -21,6 +21,8 @@ OBJECTS = uvector.$(OBJEXT)      \
           uvlib.$(OBJEXT)        \
           uvutil.$(OBJEXT)
 
+static : $(OBJECTS)
+
 libgauche-uvector.$(SOEXT) : $(OBJECTS)
 	$(MODLINK) libgauche-uvector.$(SOEXT) $(OBJECTS) $(EXT_LIBGAUCHE) $(LIBS)
 

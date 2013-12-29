@@ -15,6 +15,7 @@ XCLEANFILES = *.c util.sci
 OBJECTS = file--util.$(OBJEXT)
 
 all : $(LIBFILES)
+static : $(OBJECTS)
 
 file--util.$(SOEXT) : $(OBJECTS)
 	$(MODLINK) file--util.$(SOEXT) $(OBJECTS) $(EXT_LIBGAUCHE) $(LIBS)

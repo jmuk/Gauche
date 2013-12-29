@@ -18,6 +18,7 @@ OBJECTS = crypt--bcrypt.$(OBJEXT) \
           wrapper.$(OBJEXT)
 
 all : $(LIBFILES)
+static : $(OBJECTS)
 
 crypt--bcrypt.$(SOEXT) : $(OBJECTS)
 	$(MODLINK) crypt--bcrypt.$(SOEXT) $(OBJECTS) $(EXT_LIBGAUCHE) $(LIBS)

@@ -17,6 +17,7 @@ XCLEANFILES = dbm--gdbm.c gdbm.sci \
               ndbm-makedb ndbm-suffixes.h
 
 all : $(LIBFILES)
+static : $(OBJECTS)
 
 gdbm_OBJECTS   = dbm--gdbm.$(OBJEXT)
 

@@ -205,7 +205,7 @@ libgauche_OBJECTS = \
 	libsys.$(OBJEXT) libvec.$(OBJEXT)
 libgauche_LDFLAGS = $(SONAME_FLAG) @SHLIB_DYLIB_LDFLAGS@
 
-libgc_OBJECTS = `ls -1 $(top_builddir)/gc/.libs/*.$(OBJEXT) | grep -v '/cord' | grep -v '/staticrootslib'`
+libgc_OBJECTS = `ls -1 $(top_builddir)/gc/*.$(OBJEXT) | grep -v '/cord' | grep -v '/staticrootslib'`
 
 HEADERS = gauche.h $(INSTALL_SUBHEADERS) $(PRIVATE_HEADERS)
 
@@ -347,10 +347,11 @@ gauche-cesconv : gauche-cesconv.in
 
 static : $(LIBGAUCHE).a
 
-$(LIBGAUCHE).a : all staticinit.$(OBJEXT)
+$(LIBGAUCHE).a : $(libgauche_OBJECTS) $(GCLIB) staticinit.$(OBJEXT)
+	cd $(top_builddir)/ext; $(MAKE) static
 	$(AR) cr $(LIBGAUCHE).a $(libgauche_OBJECTS) $(libgc_OBJECTS) staticinit.$(OBJEXT) `cd $(top_builddir)/ext; $(MAKE) -s list-objects`
 
-staticinit.c : all
+staticinit.c : $(libgauche_OBJECTS) $(GCLIB)
 	$(BUILD_GOSH) $(srcdir)/gen-staticinit.scm $(top_srcdir) $(top_builddir)
 
 # tests -----------------------------------------------

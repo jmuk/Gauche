@@ -15,6 +15,7 @@ GENERATED = Makefile
 XCLEANFILES = util--sparse.c sparse.sci
 
 all : $(LIBFILES) $(SCMFILES)
+static : $(OBJECTS)
 
 util--sparse.$(SOEXT) : $(OBJECTS)
 	$(MODLINK) util--sparse.$(SOEXT) $(OBJECTS) $(EXT_LIBGAUCHE) $(LIBS)

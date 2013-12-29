@@ -15,6 +15,7 @@ GENERATED = Makefile
 XCLEANFILES =  termiolib.c
 
 all : $(LIBFILES)
+static : $(OBJECTS)
 
 gauche--termios.$(SOEXT) : $(OBJECTS)
 	$(MODLINK) gauche--termios.$(SOEXT) $(OBJECTS) $(EXT_LIBGAUCHE) $(LIBS)

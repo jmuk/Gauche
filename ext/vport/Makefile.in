@@ -15,6 +15,7 @@ GENERATED = Makefile
 XCLEANFILES = vportlib.c
 
 all : $(LIBFILES)
+static : $(OBJECTS)
 
 gauche--vport.$(SOEXT) : $(OBJECTS)
 	$(MODLINK) gauche--vport.$(SOEXT) $(OBJECTS) $(EXT_LIBGAUCHE) $(LIBS)

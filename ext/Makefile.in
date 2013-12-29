@@ -36,6 +36,9 @@ all: $(SUBDIRS)
 $(SUBDIRS):
 	(cd $@; $(MAKE) default)
 
+static:
+	for d in $(SUBDIRS); do cd $$d; $(MAKE) static; cd ..; done
+
 termios uvector sparse: util
 
 threads bcrypt sxml vport text mt-random digest windows: uvector

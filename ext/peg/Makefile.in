@@ -15,6 +15,7 @@ GENERATED = Makefile
 XCLEANFILES = peg.sci *.c
 
 all : $(LIBFILES)
+static : $(OBJECTS)
 
 parser--peg.$(SOEXT) : $(OBJECTS)
 	$(MODLINK) parser--peg.$(SOEXT) $(OBJECTS) $(EXT_LIBGAUCHE) $(LIBS)
